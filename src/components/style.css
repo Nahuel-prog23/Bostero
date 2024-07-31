@@ -1,0 +1,14 @@
+.topBar {
+    background-color:#0E1848;
+}
+
+.barraIzq {
+    background-color:#3367A9;
+    height: 100%;
+}
+
+.conteNedor {
+    background-color:#EFD200;
+    height: 100%;
+    padding-top: 50px !important;
+}

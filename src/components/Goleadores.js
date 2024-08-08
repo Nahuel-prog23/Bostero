@@ -1,36 +1,45 @@
-//import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function NumberList(props) {
-  const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    <li>{number}</li>
-  );
+function Counter({ id, value, name, onIncrement }) {
+  useEffect(() => {
+    document.title = `Counter ${name}: ${value}`;
+  }, [id, value]); // El efecto se ejecuta cada vez que el id o el value cambian
+
   return (
-    <ul>{listItems}</ul>
+    <div>
+      <p>{name}: {value}</p>
+      <button onClick={() => onIncrement(id)}>Incrementar</button>
+    </div>
   );
 }
 
 function Goleadores() {
-  
-  const numbers = [1, 2, 3, 4, 5];
-  const jugadores = [{name:"Edison Cavani",goles:13},
-    {name:"Miguel Merentiel",goles:11},
-    {name:"Kevin Zenon",goles:4},
-    {name:"Cristian Medina",goles:2}];
-  const resultado1=jugadores.filter(valor=>valor.goles>=0).
-  map(valor=>
-    <div>{valor.name}
-    : Goles {valor.goles}
-    </div>
-  )
+  const [counters, setCounters] = useState([
+    { id: 1, value: 0, name: 'Cavani' },
+    { id: 2, value: 0, name: 'Medina'  },
+    { id: 3, value: 0, name: 'Merentiel'  },
+  ]);
+
+  const incrementCounter = (id) => {
+    setCounters(counters.map(counter => 
+      counter.id === id ? { ...counter, value: counter.value + 1 } : counter
+    ));
+  };
 
   return (
-    <div className="Caja">
-    {resultado1}
+    <div>
+      <h1>Lista de Goleadores</h1>
+      {counters.map(counter => (
+        <Counter 
+          key={counter.id} 
+          id={counter.id} 
+          value={counter.value} 
+          name={counter.name} 
+          onIncrement={incrementCounter} 
+        />
+      ))}
     </div>
   );
-
-
 }
 
 export default Goleadores;

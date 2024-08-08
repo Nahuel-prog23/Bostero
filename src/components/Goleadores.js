@@ -20,11 +20,21 @@ function Goleadores() {
     { id: 3, value: 0, name: 'Merentiel'  },
   ]);
 
+  const [newCounterName, setNewCounterName] = useState('');
+
   const incrementCounter = (id) => {
     setCounters(counters.map(counter => 
       counter.id === id ? { ...counter, value: counter.value + 1 } : counter
     ));
   };
+
+  const addCounter = () => {
+    const newId = counters.length > 0 ? counters[counters.length - 1].id + 1 : 1;
+    const newName = newCounterName.trim() !== '' ? newCounterName : `Counter ${newId}`;
+    setCounters([...counters, { id: newId, value: 0, name: newName }]);
+    setNewCounterName(''); // Reset the input field after adding a new counter
+  };
+ 
 
   return (
     <div>
@@ -38,6 +48,16 @@ function Goleadores() {
           onIncrement={incrementCounter} 
         />
       ))}
+      <div>
+        <input
+          type="text"
+          value={newCounterName}
+          onChange={(e) => setNewCounterName(e.target.value)}
+          placeholder="Enter counter name"
+          style={{ marginRight: '10px', padding: '5px' }}
+        />
+        <button onClick={addCounter}>Add Counter</button>
+      </div>      
     </div>
   );
 }

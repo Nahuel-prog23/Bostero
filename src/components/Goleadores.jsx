@@ -60,7 +60,7 @@ export default function Goleadores(props: GoleadoresProps) {
           value={newCounterName}
           onChange={(e) => setNewCounterName(e.target.value)}
           placeholder="Enter counter name"
-          style={{ marginRight: '10px', padding: '5px' }}
+          style={{ marginRight: '0.1%', padding: '0.5%' }}
         />
         <button onClick={addCounter}>Add Counter</button>
       </div>      

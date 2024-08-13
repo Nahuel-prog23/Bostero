@@ -3,9 +3,11 @@ import {useState} from 'react';
 import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText, CssBaseline, Box, Container } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './components/style.css';
+import Negro from './components/Negro/Negro.jsx';
 import Tridente from './components/Tridente.js';
 import Goleadores from './components/Goleadores.jsx';
 import Contenedor from './components/Contenedor.js';
+
 
 function App() {
 
@@ -67,6 +69,9 @@ function App() {
               <ListItem button component={Link} to="/Maradona">
                 <ListItemText primary="Maradona" />
               </ListItem>
+              <ListItem  component={Link} to="/negro">
+                <ListItemText primary="Negro" />
+              </ListItem>
             </List>
         </Box>
       </Drawer>
@@ -79,7 +84,8 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/goleadores" element={<Goleador />} />
-                  <Route path="/Maradona" element={<Maradona />} />                  
+                  <Route path="/Maradona" element={<Maradona />} />       
+                  <Route path="/negro" element={<Negro />} />                 
                 </Routes>
         </Container>
       </Box>

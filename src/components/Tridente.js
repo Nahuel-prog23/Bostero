@@ -3,21 +3,23 @@ import Medina from '../img/Medina.jpg';
 import Merentiel from '../img/Merentiel.jpg';
 import '../index.css';
 
-function Tridente() {
-  let nombres=["Cavani", "Medina", "Merentiel"]
+function Tridente({counters}) {
   return (
-    <div className="contenedor">
+    <div className="contenedor">      
       <div className="caja">
         <img src={Cavani}/>
-        <div className="nombre">{nombres[0]}</div>
+        <div className="nombre">{counters[0].name}</div>
+        <div className="nombre">{counters[0].value}</div>
       </div>
       <div className="caja">
         <img src={Medina}/>
-        <div className="nombre">{nombres[1]}</div>
+        <div className="nombre">{counters[1].name}</div>
+        <div className="nombre">{counters[1].value}</div>
       </div>
       <div className="caja">
         <img src={Merentiel}/>
-        <div className="nombre">{nombres[2]}</div>
+        <div className="nombre">{counters[2].name}</div>
+        <div className="nombre">{counters[2].value}</div>
       </div>    
     </div>
   );

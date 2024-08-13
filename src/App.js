@@ -1,31 +1,40 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, CssBaseline, Box, Container } from '@mui/material';
+import {useState} from 'react';
+import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText, CssBaseline, Box, Container } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './components/style.css';
 import Tridente from './components/Tridente.js';
-import Goleadores from './components/Goleadores.js';
+import Goleadores from './components/Goleadores.jsx';
 import Contenedor from './components/Contenedor.js';
 
-const drawerWidth = 240;
-
-function Home() {
-  return (
-    <Tridente />
-  );
-}
-
-function Goleador() {
-  return (
-    <Goleadores />     
-  );
-}
-
-function Maradona() {
-  return (
-    <Contenedor />   
-  );
-}
 function App() {
+
+  const [counters, setCounters] = useState([
+    { id: 1, value: 19, name: 'Cavani' },
+    { id: 2, value: 7, name: 'Medina'  },
+    { id: 3, value: 30, name: 'Merentiel'  },
+  ]);
+
+  const drawerWidth = 240;
+  
+  function Home() {
+    return (            
+      <Tridente counters={counters} />
+    );
+  }
+  
+  function Goleador() {
+    return (
+      <Goleadores counters={counters} setCounters={setCounters} />     
+    );
+  }
+  
+  function Maradona() {
+    return (
+      <Contenedor />   
+    );
+  }
+
   return (
     <Router>  
     <Box sx={{ height: '100vh', display: 'flex' }}>

@@ -5,7 +5,7 @@ function Tridente({counters}) {
   return (
     <div className="contenedor">      
       {counters.map((counters) => (
-        <TridenteItemNuevo key={counters.id}  player={counters}/>
+        counters.img && <TridenteItemNuevo key={counters.id}  player={counters}/>
       ))}    
     </div>
   );

@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+.MuiContainer-root{
+  height: 110%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -12,7 +12,7 @@ import Contenedor from './components/Contenedor.js';
 function App() {
 
   const [counters, setCounters] = useState([
-    { id: 1, img: "/img/Cavani.jpg", value: 19, name: 'Cavani' },
+    { id: 1, img: "/img/Cavani.jpg", value: 20, name: 'Cavani' },
     { id: 2, img:"/img/Medina.jpg", value: 7, name: 'Medina'  },
     { id: 3, img:"/img/Merentiel.jpg", value: 30, name: 'Merentiel'  },
   ]);

@@ -73,7 +73,7 @@ export default function Goleadores(props: GoleadoresProps) {
         />
       ))}
       <Button variant="outlined" onClick={handleClickOpen}>
-        Add Counter
+        Agregar goleador
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a New Counter</DialogTitle>
@@ -81,14 +81,14 @@ export default function Goleadores(props: GoleadoresProps) {
           <TextField
             autoFocus
             margin="dense"
-            label="Counter Name"
+            label="Nombre"
             fullWidth
             value={newCounterName}
             onChange={(e) => setNewCounterName(e.target.value)}
           />
           <TextField
             margin="dense"
-            label="Initial Value"
+            label="Goles"
             type="number"
             fullWidth
             value={newCounterValue}

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 
 interface GoleadoresProps {  
   setTotalGoles: React.Dispatch<React.SetStateAction<number>>;
@@ -13,9 +19,9 @@ function Counter({ id, value, name, onIncrement }) {
   return (
     <div>
       <p>{name}: {value}
-      <button onClick={() => onIncrement(id)}>
+      <Button onClick={() => onIncrement(id)}>
         <AddIcon />
-      </button>
+      </Button>
       </p>
     </div>
   );
@@ -23,25 +29,33 @@ function Counter({ id, value, name, onIncrement }) {
 
 export default function Goleadores(props: GoleadoresProps) {
   const { counters, setCounters } = props;
-
   const [newCounterName, setNewCounterName] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const incrementCounter = (id) => {
     setCounters(counters.map(counter => 
       (counter.id === id ? { ...counter, value: counter.value + 1} : counter)      
     ));
-    
   };
 
   const addCounter = () => {
     const newId = counters.length > 0 ? counters[counters.length - 1].id + 1 : 1;
     const newName = newCounterName.trim() !== '' ? newCounterName : `Counter ${newId}`;
     setCounters([...counters, { id: newId, value: 0, name: newName }]);
-    setNewCounterName(''); // Reset the input field after adding a new counter
+    setNewCounterName('');
+    handleClose(); // Close the modal after adding a new counter
   };
  
-    // Ordenar los contadores de mayor a menor valor
-    const sortedCounters = [...counters].sort((a, b) => b.value - a.value);
+  // Ordenar los contadores de mayor a menor valor
+  const sortedCounters = [...counters].sort((a, b) => b.value - a.value);
 
   return (
     <div>
@@ -55,16 +69,26 @@ export default function Goleadores(props: GoleadoresProps) {
           onIncrement={incrementCounter} 
         />
       ))}
-      <div>
-        <input
-          type="text"
-          value={newCounterName}
-          onChange={(e) => setNewCounterName(e.target.value)}
-          placeholder="Enter counter name"
-          style={{ marginRight: '0.1%', padding: '0.5%' }}
-        />
-        <button onClick={addCounter}>Add Counter</button>
-      </div>      
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Add Counter
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add a New Counter</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Counter Name"
+            fullWidth
+            value={newCounterName}
+            onChange={(e) => setNewCounterName(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={addCounter}>Add</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

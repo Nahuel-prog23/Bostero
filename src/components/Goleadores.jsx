@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AddIcon from '@mui/icons-material/Add';
 
 interface GoleadoresProps {  
   setTotalGoles: React.Dispatch<React.SetStateAction<number>>;
@@ -11,20 +12,18 @@ function Counter({ id, value, name, onIncrement }) {
 
   return (
     <div>
-      <p>{name}: {value}</p>
-      <button onClick={() => onIncrement(id)}>Incrementar</button>
+      <p>{name}: {value}
+      <button onClick={() => onIncrement(id)}>
+        <AddIcon />
+      </button>
+      </p>
     </div>
   );
 }
 
 export default function Goleadores(props: GoleadoresProps) {
   const { counters, setCounters } = props;
-  /*const [counters, setCounters] = useState([
-    { id: 1, value: 0, name: 'Cavani' },
-    { id: 2, value: 0, name: 'Medina'  },
-    { id: 3, value: 0, name: 'Merentiel'  },
-  ]);
-  */
+
   const [newCounterName, setNewCounterName] = useState('');
 
   const incrementCounter = (id) => {
@@ -41,11 +40,13 @@ export default function Goleadores(props: GoleadoresProps) {
     setNewCounterName(''); // Reset the input field after adding a new counter
   };
  
+    // Ordenar los contadores de mayor a menor valor
+    const sortedCounters = [...counters].sort((a, b) => b.value - a.value);
 
   return (
     <div>
       <h1>Lista de Goleadores</h1>
-      {counters.map(counter => (
+      {sortedCounters.map(counter => (
         <Counter 
           key={counter.id} 
           id={counter.id} 

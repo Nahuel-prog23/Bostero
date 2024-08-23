@@ -5,8 +5,8 @@ import '../index.css';
 function Tridente({counters}) {
   return (  
     <>  
-      <h2>A que hora juega Boquita: Jueves 22 de Agosto 21:30</h2>
-      <Countdown targetDate="2024-08-22T21:30:00" />
+      <h2>A que hora juega Boquita: Lunes 26 de Agosto 21:00</h2>
+      <Countdown targetDate="2024-08-26T21:00:00" />
    
     <div className="contenedor">  
       {counters.map((counters) => (

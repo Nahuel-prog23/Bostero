@@ -45,7 +45,7 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
 
   return (
     <div>
-      {timerComponents.length ? timerComponents : <span>¡Está jugando Boquita!</span>}
+      {timerComponents.length ? timerComponents : <span>Está jugando Booooca</span>}
     </div>
   );
 };

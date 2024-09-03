@@ -13,7 +13,7 @@ function App() {
 
   const [counters, setCounters] = useState([
     { id: 1, img: "/img/Cavani.jpg", value: 20, name: 'Cavani' },
-    { id: 2, img:"/img/Medina.jpg", value: 7, name: 'Medina'  },
+    { id: 2, img:"/img/Medina.jpg", value: 8, name: 'Medina'  },
     { id: 3, img:"/img/Merentiel.jpg", value: 31, name: 'Merentiel'  },
   ]);
 

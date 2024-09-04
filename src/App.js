@@ -7,6 +7,8 @@ import Negro from './components/Negro/Negro.jsx';
 import Tridente from './components/Tridente.js';
 import Goleadores from './components/Goleadores.jsx';
 import Contenedor from './components/Contenedor.js';
+import Equipos from './components/Equipos.jsx';
+import Partidos from './components/Partidos.jsx';
 
 
 function App() {
@@ -69,6 +71,12 @@ function App() {
               <ListItem button component={Link} to="/Maradona">
                 <ListItemText primary="Maradona" />
               </ListItem>
+              <ListItem button component={Link} to="/Equipos">
+                <ListItemText primary="Equipos" />
+              </ListItem> 
+              <ListItem button component={Link} to="/Partidos">
+                <ListItemText primary="Partidos" />
+              </ListItem>              
               <ListItem  component={Link} to="/negro">
                 <ListItemText primary="Negro" />
               </ListItem>
@@ -85,6 +93,8 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/goleadores" element={<Goleador />} />
                   <Route path="/Maradona" element={<Maradona />} />       
+                  <Route path="/Equipos" element={<Equipos />} />       
+                  <Route path="/Partidos" element={<Partidos />} />       
                   <Route path="/negro" element={<Negro />} />                 
                 </Routes>
         </Container>
